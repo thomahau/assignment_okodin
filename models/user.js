@@ -21,16 +21,16 @@ module.exports = (sequelize, DataTypes) => {
             msg: 'Email is invalid'
           }
         }
-      }
-      // profileId: DataTypes.INTEGER
+      },
+      profileId: DataTypes.INTEGER
     },
     {
       classMethods: {
         associate: function(models) {
           // associations can be defined here
-          // User.hasOne(models.Profile, {
-          //   foreignKey: 'userId'
-          // });
+          User.hasOne(models.Profile, {
+            foreignKey: 'userId'
+          });
         }
       }
     }
