@@ -23,7 +23,15 @@ module.exports = app => {
   // New
   const onNew = (req, res) => {
     if (req.session.currentUser) {
-      res.redirect('/profiles');
+      User.findOne({
+        where: {
+          id: req.session.currentUser.id
+        }
+      })
+        .then(user => {
+          res.redirect(`/profiles/${req.session.currentUser.id}`);
+        })
+        .catch(e => res.status(500).send(e.stack));
     } else {
       res.render('sessions/new');
     }
@@ -34,19 +42,22 @@ module.exports = app => {
   // Create
   router.post('/sessions', (req, res) => {
     User.findOne({
-      username: req.body.username,
-      email: req.body.email
+      where: {
+        username: req.body.username,
+        email: req.body.email
+      }
     })
       .then(user => {
         if (user) {
           req.session.currentUser = {
             username: user.username,
             email: user.email,
-            id: user.id,
-            _id: user._id
+            id: user.id
           };
-          res.redirect('/profiles');
+          req.flash('success', 'Welcome back');
+          res.redirect(`/profiles/${req.session.currentUser.id}`);
         } else {
+          req.flash('error', 'User not found');
           res.redirect('/login');
         }
       })

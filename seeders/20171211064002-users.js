@@ -1,8 +1,9 @@
 'use strict';
 const models = require('./../models');
+const SEEDS = require('./seed-config').seeds;
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: function(queryInterface, Sequelize) {
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.
@@ -14,16 +15,17 @@ module.exports = {
       }], {});
     */
     const users = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 1; i <= SEEDS; i++) {
       users.push({
-        username: `ThorLuvsU${i}`,
-        email: `thor${i}@gmail.com`
+        username: `vikinglover${i}`,
+        email: `viking${i}@gmail.com`,
+        profileId: i
       });
     }
     return queryInterface.bulkInsert('Users', users);
   },
 
-  down: (queryInterface, Sequelize) => {
+  down: function(queryInterface, Sequelize) {
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.

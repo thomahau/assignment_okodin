@@ -1,0 +1,51 @@
+<header class="jumbotron">
+  <main class="container">
+    <div class="media">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object" src="/images/viking_{{profile.gender}}.jpg">
+        </a>
+      </div>
+      <div class="media-body">
+        <h1 class="media-heading">{{profile.User.username}}</h1>
+        <p>{{profile.age}} years old, lives in {{profile.Location.city}}</p>
+      </div>
+    </div>
+    <!-- <h1>{{profile.User.username}}</h1>
+    <p>{{profile.age}} years old, lives in {{profile.Location.city}}</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
+  </main>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>About Me</h2>
+      <p>{{profile.aboutMe}}</p>
+      <h2>Talents</h2>
+      <p>{{profile.talents}}</p>
+      <h2>Favorite Things</h2>
+      <p>{{profile.favorites}}</p>
+      <h2>Why You Should Message Me</h2>
+      <p>{{profile.whyMe}}</p>
+      &nbsp;
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Message Me!</a></p>
+    </div>
+    <div class="col-sm-3 col-sm-offset-1">
+      <h2>Basic Info</h2>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p>{{profile.gender}}</p>
+          <p>{{profile.maritalStatus}}</p>
+          <p>{{profile.height}} cm</p>
+          <p>{{profile.bodyType}}</p>
+          <p>{{profile.occupation}}</p>
+          {{#if profile.children}}
+            <p>I have children</p>
+          {{else}}
+            <p>No children</p>
+          {{/if}}
+        </div>
+      </div>
+  </div>
+</div>

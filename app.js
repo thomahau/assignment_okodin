@@ -22,24 +22,32 @@ const methodOverride = require('method-override');
 const getPostSupport = require('express-method-override-get-post-support');
 app.use(methodOverride(getPostSupport.callback, getPostSupport.options));
 
-// app.use((req, res, next) => {
-//   req.session.backUrl = req.header('Referer') || '/';
-//   next();
-// });
+app.use((req, res, next) => {
+  req.session.backUrl = req.header('Referer') || '/';
+  next();
+});
+
+app.use(express.static(`${__dirname}/public`));
+
+const flash = require('express-flash-messages');
+app.use(flash());
 
 const morgan = require('morgan');
 app.use(morgan('tiny'));
 
 // Routes
 const sessionsRoutes = require('./controllers/sessions')(app);
+const profilesRoutes = require('./controllers/profiles');
 app.use('/', sessionsRoutes);
+app.use('/profiles', profilesRoutes);
 
 const expressHandlebars = require('express-handlebars');
+const helpers = require('./helpers');
 
 const hbs = expressHandlebars.create({
   partialsDir: 'views/',
-  defaultLayout: 'application'
-  // helpers:
+  defaultLayout: 'application',
+  helpers: helpers
 });
 
 app.engine('handlebars', hbs.engine);
