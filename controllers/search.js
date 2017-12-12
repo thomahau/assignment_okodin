@@ -7,14 +7,14 @@ const User = models.User;
 const Profile = models.Profile;
 const Location = models.Location;
 
-router.get('/:id', (req, res) => {
-  Profile.findOne({
+router.get('/', (req, res) => {
+  Profile.findAll({
     where: {
-      userId: req.params.id
+      userId: { $ne: req.session.currentUser.id }
     },
     include: [{ model: User }, { model: Location }]
-  }).then(profile => {
-    res.render('profiles/show', { profile });
+  }).then(profiles => {
+    res.render('searches/index', { profiles });
   });
 });
 

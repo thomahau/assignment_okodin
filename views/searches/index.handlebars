@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <h2>Searching for [...]</h2>
+  </div>
+  <div class="row">
+    <ul class="nav nav-tabs" id="searchForm">
+      <li role="presentation" class="active"><a href="#one" aria-controls="one" role="tab" data-toggle="tab">Basics</a></li>
+      <li role="presentation"><a href="#two" aria-controls="two" role="tab" data-toggle="tab">Appearance</a></li>
+      <li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab">Availability</a></li>
+      <li role="presentation"><a href="#four" aria-controls="four" role="tab" data-toggle="tab">Occupation</a></li>
+      <li role="presentation"><a href="#five" aria-controls="five" role="tab" data-toggle="tab">Children</a></li>
+    </ul>
+    <form action="/search" method="post">
+      <div class="tab-content">
+        <div class="tab-pane active" id="one">
+          <div class="form-group col-sm-2">
+            <label for="gender">Gender</label>
+            <div class="checkbox">
+              <label><input type="checkbox" value="Male" class="gender">Male</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="Female" class="gender">Female</label>
+            </div>
+          </div>
+          <div class="form-group col-sm-2">
+            <label for="age" class="control-label">Age</label>
+            <select class="form-control" name="age" id="age">
+              <option value="" selected disabled hidden>Age</option>
+              <option value="18-25">18-25</option>
+              <option value="25-35">25-35</option>
+              <option value="35-45">35-45</option>
+              <option value="45-55">45-55</option>
+              <option value="55-65">55-65</option>
+              <option value="65-75">65-75</option>
+              <option value="75-85">75-85</option>
+              <option value="85-100">85-100</option>
+            </select>
+          </div>
+          <div class="form-group col-sm-2">
+            <label for="dist" class="control-label">Distance</label>
+            <select class="form-control" name="dist" id="dist">
+              <option value="" selected disabled hidden>Distance</option>
+              <option value="5">5 km</option>
+              <option value="10">10 km</option>
+              <option value="20">20 km</option>
+              <option value="50">50 km</option>
+              <option value="100">100 km</option>
+              <option value="200">200 km</option>
+            </select>
+          </div>
+        </div>
+        <div class="tab-pane" id="two">
+          <!-- Body type; height-->
+        </div>
+        <div class="tab-pane" id="three">
+          <!-- Marital status-->
+        </div>
+        <div class="tab-pane" id="four">
+          <!-- Job title -->
+        </div>
+        <div class="tab-pane" id="five">
+          <!-- Children -->
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+  </div>
+</div>
