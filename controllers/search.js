@@ -18,4 +18,9 @@ router.get('/', (req, res) => {
   });
 });
 
+router.post('/', (req, res) => {
+  console.dir(req.body, { colors: true, depth: null });
+  res.redirect('back');
+});
+
 module.exports = router;
