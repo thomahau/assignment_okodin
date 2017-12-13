@@ -5,12 +5,6 @@
   "minHeight": 130,
   "maxHeight": 230,
   "maxDistance": 200,
-  "maritalStatus": ["Single", "In a Relationship", "Married", "Other"],
-  "bodyTypes": [
-    "Slender",
-    "Average",
-    "A Little Extra",
-    "Overweight",
-    "Athletic"
-  ]
+  "maritalStatus": ["Single", "Dating", "Married", "Other"],
+  "bodyTypes": ["Slender", "Average", "Curvy", "Overweight", "Athletic"]
 }

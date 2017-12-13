@@ -8,62 +8,121 @@
       <li role="presentation"><a href="#two" aria-controls="two" role="tab" data-toggle="tab">Appearance</a></li>
       <li role="presentation"><a href="#three" aria-controls="three" role="tab" data-toggle="tab">Availability</a></li>
       <li role="presentation"><a href="#four" aria-controls="four" role="tab" data-toggle="tab">Occupation</a></li>
-      <li role="presentation"><a href="#five" aria-controls="five" role="tab" data-toggle="tab">Children</a></li>
     </ul>
     <form action="/search" method="post">
-      <div class="tab-content">
-        <div class="tab-pane active" id="one">
-          <div class="form-group col-sm-2">
-            <label for="gender">Gender</label>
-            <div class="checkbox">
-              <label><input type="checkbox" value="Male" class="gender">Male</label>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="tab-content">
+            <div class="tab-pane active" id="one">
+              <div class="form-group col-sm-2">
+                <label for="search_gender">Gender</label>
+                <div class="radio">
+                  <label><input type="radio" name="search[profile][gender]" value="male" id="search_gender">Male</label>
+                </div>
+                <div class="radio">
+                  <label><input type="radio" name="search[profile][gender]" value="female" id="search_gender">Female</label>
+                </div>
+              </div>
+              <div class="form-group col-sm-2">
+                <label for="search_age" class="control-label">Age</label>
+                <select class="form-control" name="search[profile][age]" id="search_age">
+                  <option value="" selected disabled hidden>Age</option>
+                  <option value="18-25">18-25</option>
+                  <option value="25-35">25-35</option>
+                  <option value="35-45">35-45</option>
+                  <option value="45-55">45-55</option>
+                  <option value="55-65">55-65</option>
+                  <option value="65-75">65-75</option>
+                  <option value="75-85">75-85</option>
+                  <option value="85-100">85-100</option>
+                </select>
+              </div>
+              <div class="form-group col-sm-2">
+                <label for="search_distance" class="control-label">Distance</label>
+                <select class="form-control" name="search[location][distance]" id="search_distance">
+                  <option value="" selected disabled hidden>Distance</option>
+                  <option value="5">5 km</option>
+                  <option value="10">10 km</option>
+                  <option value="20">20 km</option>
+                  <option value="50">50 km</option>
+                  <option value="100">100 km</option>
+                  <option value="200">200 km</option>
+                </select>
+              </div>
             </div>
-            <div class="checkbox">
-              <label><input type="checkbox" value="Female" class="gender">Female</label>
+            <div class="tab-pane" id="two">
+              <div class="form-group col-sm-2">
+                <label for="search_height" class="control-label">Height</label>
+                <select class="form-control" name="search[profile][minHeight]" id="search_height">
+                  <option value="" selected disabled hidden>min</option>
+                  <option value="150">min 150 cm</option>
+                  <option value="165">min 165 cm</option>
+                  <option value="180">min 180 cm</option>
+                  <option value="200">min 200 cm</option>
+                </select>
+                <select class="form-control" name="search[profile][maxHeight]" id="search_height">
+                  <option value="" selected disabled hidden>max</option>
+                  <option value="150">max 150 cm</option>
+                  <option value="165">max 165 cm</option>
+                  <option value="180">max 180 cm</option>
+                  <option value="200">max 200 cm</option>
+                </select>
+              </div>
+              <div class="form-group col-sm-6">
+                <label for="search_bodyType">Body type</label>
+                <div>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="slender">Slender</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="average">Average</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="curvy">Curvy</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="overweight">Overweight</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="athletic">Athletic</label>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="three">
+              <div class="form-group col-sm-4">
+                <label for="search_maritalStatus">Status</label>
+                <div>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][maritalStatus][]" value="single">Single</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][maritalStatus][]" value="dating">Dating</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][maritalStatus][]" value="married">Married</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][maritalStatus][]" value="other">Other</label>
+                </div>
+              </div>
+              <div class="form-group col-sm-2">
+                <label for="search_children">Children</label>
+                <div>
+                  <label class="radio-inline"><input type="radio" value="true" name="search[profile][children]">Yes</label>
+                  <label class="radio-inline"><input type="radio" value="false" name="search[profile][children]">No</label>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="four">
+              <div class="form-group col-sm-3">
+                <label for="search_occupation">Occupation</label>
+                <input type="text" class="form-control" name="search[profile][occupation]" id="search_occupation" placeholder="Job title search phrase">
+              </div>
             </div>
           </div>
+        </div>
+        <div class="row">
           <div class="form-group col-sm-2">
-            <label for="age" class="control-label">Age</label>
-            <select class="form-control" name="age" id="age">
-              <option value="" selected disabled hidden>Age</option>
-              <option value="18-25">18-25</option>
-              <option value="25-35">25-35</option>
-              <option value="35-45">35-45</option>
-              <option value="45-55">45-55</option>
-              <option value="55-65">55-65</option>
-              <option value="65-75">65-75</option>
-              <option value="75-85">75-85</option>
-              <option value="85-100">85-100</option>
+            <input type="submit" class="btn btn-primary btn-block" value="Search">
+          </div>
+          <div class="form-group col-sm-2">
+            <input type="hidden" name="search" value="{{search}}">
+
+            <select onchange="this.form.submit()" name="sort" class="form-control">
+              <option value="distance">Sort by distance</option>
+              <option value="age">Sort by age</option>
+              <option value="lastLogin">Sort by last login</option>
             </select>
           </div>
-          <div class="form-group col-sm-2">
-            <label for="dist" class="control-label">Distance</label>
-            <select class="form-control" name="dist" id="dist">
-              <option value="" selected disabled hidden>Distance</option>
-              <option value="5">5 km</option>
-              <option value="10">10 km</option>
-              <option value="20">20 km</option>
-              <option value="50">50 km</option>
-              <option value="100">100 km</option>
-              <option value="200">200 km</option>
-            </select>
-          </div>
-        </div>
-        <div class="tab-pane" id="two">
-          <!-- Body type; height-->
-        </div>
-        <div class="tab-pane" id="three">
-          <!-- Marital status-->
-        </div>
-        <div class="tab-pane" id="four">
-          <!-- Job title -->
-        </div>
-        <div class="tab-pane" id="five">
-          <!-- Children -->
         </div>
       </div>
     </form>
   </div>
   <div class="row">
+
   </div>
 </div>
