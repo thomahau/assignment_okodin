@@ -1,6 +1,10 @@
 <div class="container">
   <div class="row">
-    <h2>Searching for [...]</h2>
+    {{#if searchDistance}}
+    <h2>Searching for {{gender}} vikings ages {{minAge}} to {{maxAge}} within {{searchDistance}} km of {{userCity}}</h2>
+    {{else}}
+    <h2>Search to your heart's content!</h2>
+    {{/if}}
   </div>
   <div class="row">
     <ul class="nav nav-tabs" id="searchForm">
@@ -17,23 +21,24 @@
               <div class="form-group col-sm-2">
                 <label for="search_gender">Gender</label>
                 <div class="radio">
-                  <label><input type="radio" name="search[profile][gender]" value="male" id="search_gender">Male</label>
+                  <label><input type="radio" name="search[profile][gender]" value="Male" id="search_gender" {{{setChecked 'Male' search.profile.gender}}}>Male</label>
                 </div>
                 <div class="radio">
-                  <label><input type="radio" name="search[profile][gender]" value="female" id="search_gender">Female</label>
+                  <label><input type="radio" name="search[profile][gender]" value="Female" id="search_gender" {{{setChecked 'Female' search.profile.gender}}}>Female</label>
                 </div>
               </div>
               <div class="form-group col-sm-2">
                 <label for="search_age" class="control-label">Min. age</label>
-                <input type="number" class="form-control" id="search_age" name="search[profile][minAge]" min="18">
+                <input type="number" class="form-control" id="search_age" name="search[profile][minAge]" min="18" value="{{search.profile.minAge}}">
               </div>
               <div class="form-group col-sm-2">
                 <label for="search_age" class="control-label">Max. age</label>
-                <input type="number" class="form-control" id="search_age" name="search[profile][maxAge]" min="18">
+                <input type="number" class="form-control" id="search_age" name="search[profile][maxAge]" min="18" value="{{search.profile.maxAge}}">
               </div>
               <div class="form-group col-sm-2">
                 <label for="search_distance" class="control-label">Distance</label>
                 <select class="form-control" name="search[location][distance]" id="search_distance">
+                  {{#setSelect search.location.distance}}
                   <option value="" selected disabled hidden>Distance</option>
                   <option value="5">5 km</option>
                   <option value="10">10 km</option>
@@ -41,26 +46,27 @@
                   <option value="50">50 km</option>
                   <option value="100">100 km</option>
                   <option value="200">200 km</option>
+                  {{/setSelect}}
                 </select>
               </div>
             </div>
             <div class="tab-pane" id="two">
               <div class="form-group col-sm-2">
                 <label for="search_height" class="control-label">Min. height (cm)</label>
-                <input type="number" class="form-control" id="search_height" name="search[profile][minHeight]">
+                <input type="number" class="form-control" id="search_height" name="search[profile][minHeight]" value="{{search.profile.minHeight}}">
               </div>
               <div class="form-group col-sm-2">
                 <label for="search_height" class="control-label">Max. height (cm)</label>
-                <input type="number" class="form-control" id="search_height" name="search[profile][maxHeight]">
+                <input type="number" class="form-control" id="search_height" name="search[profile][maxHeight]" value="{{search.profile.maxHeight}}">
               </div>
               <div class="form-group col-sm-6">
                 <label for="search_bodyType">Body type</label>
                 <div>
-                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="slender">Slender</label>
-                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="average">Average</label>
-                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="curvy">Curvy</label>
-                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="overweight">Overweight</label>
-                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="athletic">Athletic</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="Slender" {{{setChecked 'Slender' search.profile.bodyType}}}>Slender</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="Average" {{{setChecked 'Average' search.profile.bodyType}}}>Average</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="Curvy" {{{setChecked 'Curvy' search.profile.bodyType}}}>Curvy</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="Overweight" {{{setChecked 'Overweight' search.profile.bodyType}}}>Overweight</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][bodyType][]" value="Athletic" {{{setChecked 'Athletic' search.profile.bodyType}}}>Athletic</label>
                 </div>
               </div>
             </div>
@@ -68,24 +74,24 @@
               <div class="form-group col-sm-4">
                 <label for="search_maritalStatus">Status</label>
                 <div>
-                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][maritalStatus][]" value="single">Single</label>
-                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][maritalStatus][]" value="dating">Dating</label>
-                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][maritalStatus][]" value="married">Married</label>
-                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][maritalStatus][]" value="other">Other</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][maritalStatus][]" value="Single" {{{setChecked 'Single' search.profile.maritalStatus}}}>Single</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][maritalStatus][]" value="Dating" {{{setChecked 'Dating' search.profile.maritalStatus}}}>Dating</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][maritalStatus][]" value="Married" {{{setChecked 'Married' search.profile.maritalStatus}}}>Married</label>
+                  <label class="checkbox-inline"><input type="checkbox" name="search[profile][maritalStatus][]" value="Other" {{{setChecked 'Other' search.profile.maritalStatus}}}>Other</label>
                 </div>
               </div>
               <div class="form-group col-sm-2">
                 <label for="search_children">Children</label>
                 <div>
-                  <label class="radio-inline"><input type="radio" value="true" name="search[profile][children]">Yes</label>
-                  <label class="radio-inline"><input type="radio" value="false" name="search[profile][children]">No</label>
+                  <label class="radio-inline"><input type="radio" value="true" name="search[profile][children]" {{{setChecked 'true' search.profile.children}}}>Yes</label>
+                  <label class="radio-inline"><input type="radio" value="false" name="search[profile][children]" {{{setChecked 'false' search.profile.children}}}>No</label>
                 </div>
               </div>
             </div>
             <div class="tab-pane" id="four">
               <div class="form-group col-sm-3">
                 <label for="search_occupation">Occupation</label>
-                <input type="text" class="form-control" name="search[profile][occupation]" id="search_occupation" placeholder="Job title search phrase">
+                <input type="text" class="form-control" name="search[profile][occupation]" id="search_occupation" placeholder="Job title search phrase" value="{{search.profile.occupation}}">
               </div>
             </div>
           </div>
@@ -95,19 +101,31 @@
             <input type="submit" class="btn btn-primary btn-block" value="Search">
           </div>
           <div class="form-group col-sm-2">
-            <input type="hidden" name="search" value="{{search}}">
+            <!-- <input type="hidden" name="search" value="{{search}}"> -->
 
             <select onchange="this.form.submit()" name="search[sort]" class="form-control">
-              <option value="distance">Sort by distance</option>
+              {{#setSelect currentOrder}}
               <option value="age">Sort by age</option>
-              <option value="lastLogin">Sort by last login</option>
+              <option value="distance">Sort by distance</option>
+              <option value="updatedAt">Sort by last login</option>
+              {{/setSelect}}
             </select>
           </div>
         </div>
       </div>
     </form>
   </div>
+  {{#if profiles.length}}
   <div class="row">
-
+    {{#each profiles as |profile|}}
+    <div class="col-sm-4">
+      <div class="text-center">
+        <img class="img-fluid img-thumbnail" src="/images/viking_{{profile.gender}}.jpg">
+        <p><a href="/profiles/{{profile.userId}}">{{profile.User.username}}</a></p>
+        <p><a href="">Like?</a></p>
+      </div>
+    </div>
+    {{/each}}
   </div>
+  {{/if}}
 </div>
