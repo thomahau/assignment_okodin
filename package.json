@@ -1,15 +1,18 @@
 {
   "name": "assignment_okodin",
   "version": "1.0.0",
-  "description": "Build a dating app so Viking thunder gods can find love &lt;3",
+  "description":
+    "Build a dating app so Viking thunder gods can find love &lt;3",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "which nodemon > /dev/null && nodemon app.js || node app.js",
     "console": "node repl.js",
     "c": "node repl.js",
-    "seed": "npm run sql db:migrate:undo:all && npm run sql db:migrate && npm run sql db:seed:all",
-    "seeds": "npm run sql db:migrate:undo:all && npm run sql db:migrate && npm run sql db:seed:all",
+    "seed":
+      "npm run sql db:migrate:undo:all && npm run sql db:migrate && npm run sql db:seed:all",
+    "seeds":
+      "npm run sql db:migrate:undo:all && npm run sql db:migrate && npm run sql db:seed:all",
     "sql": "node_modules/.bin/sequelize"
   },
   "repository": {
@@ -33,7 +36,7 @@
     "load-helpers": "^1.0.1",
     "method-override": "^2.3.10",
     "morgan": "^1.9.0",
-    "pg": "^7.4.0",
+    "pg": "^6.4.2",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.27.0"
   }

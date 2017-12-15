@@ -39,9 +39,11 @@ app.use(morgan('tiny'));
 const sessionsRoutes = require('./controllers/sessions')(app);
 const profilesRoutes = require('./controllers/profiles');
 const searchRoutes = require('./controllers/search');
+const viewsRoutes = require('./controllers/views');
 app.use('/', sessionsRoutes);
 app.use('/profiles', profilesRoutes);
 app.use('/search', searchRoutes);
+app.use('/views', viewsRoutes);
 
 const expressHandlebars = require('express-handlebars');
 const helpers = require('./helpers');

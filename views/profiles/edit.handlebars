@@ -1,0 +1,110 @@
+<form action="/profiles/{{profile.userId}}" method="post">
+  <input type="hidden" name="_method" value="PUT">
+  <header class="jumbotron">
+    <main class="container">
+      <div class="media">
+        <div class="media-left">
+          <img class="media-object" src="/images/viking_{{profile.gender}}.jpg">
+        </div>
+        <div class="media-body">
+          <h1 class="media-heading">{{profile.User.username}}</h1>
+          <div class="row">
+            <div class="col-sm-2 form-group">
+              <input type="number" class="form-control" name="profile[age]" value="{{profile.age}}">
+            </div>
+            <div class="col-sm-2 form-group">
+              <span>years old, lives in</span>
+            </div>
+            <div class="col-sm-3 form-group">
+              <input type="text" class="form-control" name="location[city]" value="{{profile.Location.city}}">
+            </div>
+            <div class="col-sm-1">
+              <span>Distance:</span>
+            </div>
+            <div class="col-sm-2 form-group">
+              <input type="number" class="form-control" name="location[distance]" value="{{profile.Location.distance}}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>About Me</h2>
+        <textarea class="form-control" rows="3" name="profile[aboutMe]">{{profile.aboutMe}}</textarea>
+        <h2>Talents</h2>
+        <textarea class="form-control" rows="3" name="profile[talents]">{{profile.talents}}</textarea>
+        <h2>Favorite Things</h2>
+        <textarea class="form-control" rows="3" name="profile[favorites]">{{profile.favorites}}</textarea>
+        <h2>Why You Should Message Me</h2>
+        <textarea class="form-control" rows="3" name="profile[whyMe]">{{profile.whyMe}}</textarea>
+        &nbsp;
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary btn-lg" value="Update Profile">
+        </div>
+      </div>
+      <div class="col-sm-3 col-sm-offset-1">
+        <h2>Basic Info</h2>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="form-group">
+              <label class="radio-inline">
+                <input type="radio" name="profile[gender]" value="Male" {{{setChecked 'Male' profile.gender}}}>Male
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="profile[gender]" value="Female" {{{setChecked 'Female' profile.gender}}}>Female
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="radio-inline">
+                <input type="radio" name="profile[maritalStatus]" value="Single" {{{setChecked 'Single' profile.maritalStatus}}}>Single
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="profile[maritalStatus]" value="Dating" {{{setChecked 'Dating' profile.maritalStatus}}}>Dating
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="profile[maritalStatus]" value="Married" {{{setChecked 'Married' profile.maritalStatus}}}>Married
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="profile[maritalStatus]" value="Other" {{{setChecked 'Other' profile.maritalStatus}}}>Other
+              </label>
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" name="profile[height]" value="{{profile.height}}">
+            </div>
+            <div class="form-group">
+              <label class="radio-inline">
+                <input type="radio" name="profile[bodyType]" value="Slender" {{{setChecked 'Slender' profile.bodyType}}}>Slender
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="profile[bodyType]" value="Average" {{{setChecked 'Average' profile.bodyType}}}>Average
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="profile[bodyType]" value="Curvy" {{{setChecked 'Curvy' profile.bodyType}}}>Curvy
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="profile[bodyType]" value="Overweight" {{{setChecked 'Overweight' profile.bodyType}}}>Overweight
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="profile[bodyType]" value="Athletic" {{{setChecked 'Athletic' profile.bodyType}}}>Athletic
+              </label>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="profile[occupation]" value="{{profile.occupation}}">
+            </div>
+            <div class="form-group">
+              <label class="radio-inline">
+                <input type="radio" name="profile[children]" value="true" {{{setChecked true profile.children}}}>Yes
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="profile[children]" value="false" {{{setChecked false profile.children}}}>No
+              </label>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</form>

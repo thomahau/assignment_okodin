@@ -2,13 +2,14 @@
   <main class="container">
     <div class="media">
       <div class="media-left">
-        <a href="#">
-          <img class="media-object" src="/images/viking_{{profile.gender}}.jpg">
-        </a>
+        <img class="media-object" src="/images/viking_{{profile.gender}}.jpg">
       </div>
       <div class="media-body">
         <h1 class="media-heading">{{profile.User.username}}</h1>
         <p>{{profile.age}} years old, lives in {{profile.Location.city}}</p>
+        {{#if editable}}
+        <p><a class="btn btn-info" href="/profiles/{{profile.userId}}/edit" role="button">Edit Profile</a></p>
+        {{/if}}
       </div>
     </div>
   </main>

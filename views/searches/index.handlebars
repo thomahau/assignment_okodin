@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    {{#if searchDistance}}
-    <h2>Searching for {{gender}} vikings ages {{minAge}} to {{maxAge}} within {{searchDistance}} km of {{userCity}}</h2>
+    {{#if search.profile}}
+    <h2>Searching for {{search.profile.gender}} vikings ages {{minAge}} to {{maxAge}} within {{searchDistance}} km of {{userCity}}</h2>
     {{else}}
     <h2>Search to your heart's content!</h2>
     {{/if}}
@@ -101,8 +101,6 @@
             <input type="submit" class="btn btn-primary btn-block" value="Search">
           </div>
           <div class="form-group col-sm-2">
-            <!-- <input type="hidden" name="search" value="{{search}}"> -->
-
             <select onchange="this.form.submit()" name="search[sort]" class="form-control">
               {{#setSelect currentOrder}}
               <option value="age">Sort by age</option>

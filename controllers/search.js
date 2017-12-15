@@ -13,15 +13,18 @@ router.get('/', (req, res) => {
     where: {
       userId: { $ne: req.session.currentUser.id }
     },
-    include: [{ model: User }, { model: Location }]
+    include: [
+      {
+        all: true,
+        include: [{ all: true }]
+      }
+    ]
   }).then(profiles => {
     res.render('searches/index', { profiles });
   });
 });
 
 router.post('/', (req, res) => {
-  console.dir(req.body, { colors: true, depth: null });
-
   const search = req.body.search;
   const gender = search.profile.gender || '';
   const minAge = search.profile.minAge || 18;
@@ -97,6 +100,9 @@ router.post('/', (req, res) => {
           profiles,
           search,
           userCity,
+          minAge,
+          maxAge,
+          searchDistance,
           currentOrder
         });
       })

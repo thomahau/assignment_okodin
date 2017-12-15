@@ -26,7 +26,27 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models) {
     // associations can be defined here
     User.hasOne(models.Profile, {
-      foreignKey: "userId"
+      foreignKey: 'userId'
+    });
+
+    User.hasMany(models.View, {
+      foreignKey: 'viewerId'
+    });
+
+    User.belongsToMany(models.User, {
+      through: models.View,
+      as: 'Viewer',
+      foreignKey: 'viewerId'
+    });
+
+    User.hasMany(models.View, {
+      foreignKey: 'vieweeId'
+    });
+
+    User.belongsToMany(models.User, {
+      through: models.View,
+      as: 'Viewee',
+      foreignKey: 'vieweeId'
     });
   };
 
