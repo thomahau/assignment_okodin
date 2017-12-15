@@ -1,0 +1,48 @@
+<div class="container">
+  <header class="row">
+    <h1 class="text-center">Views</h1>
+  </header>
+
+  <div class="row">
+    <ul class="nav nav-tabs" id="viewsTabs">
+      <li role="presentation" class="active"><a href="#viewee" aria-controls="viewee" role="tab" data-toggle="tab">They Viewed You</a></li>
+      <li role="presentation"><a href="#viewer" aria-controls="viewer" role="tab" data-toggle="tab">You Viewed Them</a></li>
+    </ul>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="tab-content">
+          <div class="tab-pane active" id="viewee">
+            {{#if viewers.length}}
+            {{#each viewers as |viewer|}}
+            <div class="media">
+              <div class="media-left">
+                <img class="media-object" src="/images/viking_{{viewer.gender}}.jpg" style="max-height: 50%">
+              </div>
+              <div class="media-body">
+                <h3 class="media-heading"><a href="/profiles/{{viewer.userId}}">{{viewer.User.username}}</a></h3>
+                <p>{{viewer.age}} years old, lives in {{viewer.Location.city}}</p>
+              </div>
+            </div>
+            {{/each}}
+            {{/if}}
+          </div>
+          <div class="tab-pane" id="viewer">
+            {{#if viewees.length}}
+            {{#each viewees as |viewee|}}
+            <div class="media">
+              <div class="media-left">
+                <img class="media-object" src="/images/viking_{{viewee.gender}}.jpg" style="max-height: 50%">
+              </div>
+              <div class="media-body">
+                <h3 class="media-heading"><a href="/profiles/{{viewee.userId}}">{{viewee.User.username}}</a></h3>
+                <p>{{viewee.age}} years old, lives in {{viewee.Location.city}}</p>
+              </div>
+            </div>
+            {{/each}}
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
