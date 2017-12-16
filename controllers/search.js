@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
   const maxAge = search.profile.maxAge || 100;
   const searchDistance = search.location ? search.location.distance : 200;
   const userId = req.session.currentUser.id;
-  let currentOrder = search.order || 'age';
+  let currentOrder = search.sort || 'age';
   let newOrder;
   let userCity;
   let locations;
@@ -77,7 +77,6 @@ router.post('/', (req, res) => {
         } else if (search.sort === 'updatedAt') {
           newOrder = [[Profile.associations.User, search.sort]];
         }
-        currentOrder = newOrder;
 
         return Profile.findAll({
           where: searchParams,
