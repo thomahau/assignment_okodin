@@ -1,0 +1,11 @@
+.btn-like {
+  background: none;
+  border: none;
+  color: #447ab2;
+  cursor: pointer;
+}
+
+.btn-like:hover {
+  text-decoration: underline;
+}
+

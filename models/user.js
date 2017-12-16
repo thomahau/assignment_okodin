@@ -24,11 +24,11 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = function(models) {
-    // associations can be defined here
+    // profile
     User.hasOne(models.Profile, {
       foreignKey: 'userId'
     });
-
+    // views
     User.hasMany(models.View, {
       foreignKey: 'viewerId'
     });
@@ -47,6 +47,26 @@ module.exports = (sequelize, DataTypes) => {
       through: models.View,
       as: 'Viewee',
       foreignKey: 'vieweeId'
+    });
+    // likes
+    User.hasMany(models.Like, {
+      foreignKey: 'likerId'
+    });
+
+    User.belongsToMany(models.User, {
+      through: models.Like,
+      as: 'Liker',
+      foreignKey: 'likerId'
+    });
+
+    User.hasMany(models.Like, {
+      foreignKey: 'likeeId'
+    });
+
+    User.belongsToMany(models.User, {
+      through: models.Like,
+      as: 'Likee',
+      foreignKey: 'likeeId'
     });
   };
 

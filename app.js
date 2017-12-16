@@ -40,10 +40,12 @@ const sessionsRoutes = require('./controllers/sessions')(app);
 const profilesRoutes = require('./controllers/profiles');
 const searchRoutes = require('./controllers/search');
 const viewsRoutes = require('./controllers/views');
+const likesRoutes = require('./controllers/likes');
 app.use('/', sessionsRoutes);
 app.use('/profiles', profilesRoutes);
 app.use('/search', searchRoutes);
 app.use('/views', viewsRoutes);
+app.use('/likes', likesRoutes);
 
 const expressHandlebars = require('express-handlebars');
 const helpers = require('./helpers');

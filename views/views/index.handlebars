@@ -5,13 +5,13 @@
 
   <div class="row">
     <ul class="nav nav-tabs" id="viewsTabs">
-      <li role="presentation" class="active"><a href="#viewee" aria-controls="viewee" role="tab" data-toggle="tab">They Viewed You</a></li>
-      <li role="presentation"><a href="#viewer" aria-controls="viewer" role="tab" data-toggle="tab">You Viewed Them</a></li>
+      <li role="presentation" class="active"><a href="#viewers" aria-controls="viewers" role="tab" data-toggle="tab">They Viewed You</a></li>
+      <li role="presentation"><a href="#viewees" aria-controls="viewees" role="tab" data-toggle="tab">You Viewed Them</a></li>
     </ul>
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="tab-content">
-          <div class="tab-pane active" id="viewee">
+          <div class="tab-pane active" id="viewers">
             {{#if viewers.length}}
             {{#each viewers as |viewer|}}
             <div class="media">
@@ -26,7 +26,7 @@
             {{/each}}
             {{/if}}
           </div>
-          <div class="tab-pane" id="viewer">
+          <div class="tab-pane" id="viewees">
             {{#if viewees.length}}
             {{#each viewees as |viewee|}}
             <div class="media">

@@ -120,7 +120,10 @@
       <div class="text-center">
         <img class="img-fluid img-thumbnail" src="/images/viking_{{profile.gender}}.jpg">
         <p><a href="/profiles/{{profile.userId}}">{{profile.User.username}}</a></p>
-        <p><a href="">Like?</a></p>
+        <form action="/likes" method="post">
+          <input type="hidden" name="likee" value="{{profile.userId}}">
+          <input type="submit" class="btn-like" value="Like?">
+        </form>
       </div>
     </div>
     {{/each}}

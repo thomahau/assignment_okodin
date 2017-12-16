@@ -1,0 +1,64 @@
+<div class="container">
+  <header class="row">
+    <h1 class="text-center">Likes</h1>
+  </header>
+
+  <div class="row">
+    <ul class="nav nav-tabs" id="viewsTabs">
+      <li role="presentation" class="active"><a href="#likers" aria-controls="likers" role="tab" data-toggle="tab">They Like You</a></li>
+      <li role="presentation"><a href="#likees" aria-controls="likees" role="tab" data-toggle="tab">You Like Them</a></li>
+      <li role="presentation"><a href="#dual" aria-controls="dual" role="tab" data-toggle="tab">You Like Each Other</a></li>
+    </ul>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="tab-content">
+          <div class="tab-pane active" id="likers">
+            {{#if likers.length}}
+            {{#each likers as |liker|}}
+            <div class="media">
+              <div class="media-left">
+                <img class="media-object" src="/images/viking_{{liker.gender}}.jpg" style="max-height: 50%">
+              </div>
+              <div class="media-body">
+                <h3 class="media-heading"><a href="/profiles/{{liker.userId}}">{{liker.User.username}}</a></h3>
+                <p>{{liker.age}} years old, lives in {{liker.Location.city}}</p>
+              </div>
+            </div>
+            {{/each}}
+            {{/if}}
+          </div>
+          <div class="tab-pane" id="likees">
+            {{#if likees.length}}
+            {{#each likees as |likee|}}
+            <div class="media">
+              <div class="media-left">
+                <img class="media-object" src="/images/viking_{{likee.gender}}.jpg" style="max-height: 50%">
+              </div>
+              <div class="media-body">
+                <h3 class="media-heading"><a href="/profiles/{{likee.userId}}">{{likee.User.username}}</a></h3>
+                <p>{{likee.age}} years old, lives in {{likee.Location.city}}</p>
+              </div>
+            </div>
+            {{/each}}
+            {{/if}}
+          </div>
+          <div class="tab-pane" id="dual">
+            {{#if mutualLikes.length}}
+            {{#each mutualLikes as |likee|}}
+            <div class="media">
+              <div class="media-left">
+                <img class="media-object" src="/images/viking_{{likee.gender}}.jpg" style="max-height: 50%">
+              </div>
+              <div class="media-body">
+                <h3 class="media-heading"><a href="/profiles/{{likee.userId}}">{{likee.User.username}}</a></h3>
+                <p>{{likee.age}} years old, lives in {{likee.Location.city}}</p>
+              </div>
+            </div>
+            {{/each}}
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

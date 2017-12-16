@@ -26,7 +26,6 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const search = req.body.search;
-  const gender = search.profile.gender || '';
   const minAge = search.profile.minAge || 18;
   const maxAge = search.profile.maxAge || 100;
   const searchDistance = search.location ? search.location.distance : 200;
@@ -34,7 +33,6 @@ router.post('/', (req, res) => {
   let currentOrder = search.order || 'age';
   let newOrder;
   let userCity;
-  let userDistance;
   let locations;
   let profiles;
 
@@ -53,8 +51,8 @@ router.post('/', (req, res) => {
       transaction: t
     })
       .then(user => {
+        const userDistance = user.Profile.Location.distance;
         userCity = user.Profile.Location.city;
-        userDistance = user.Profile.Location.distance;
 
         return Location.findAll({
           where: {
@@ -70,6 +68,7 @@ router.post('/', (req, res) => {
       })
       .then(results => {
         locations = results.map(result => result.id);
+        const searchParams = formatSearchParams(search, locations, userId);
 
         if (search.sort === 'age') {
           newOrder = [search.sort];
@@ -79,8 +78,6 @@ router.post('/', (req, res) => {
           newOrder = [[Profile.associations.User, search.sort]];
         }
         currentOrder = newOrder;
-
-        const searchParams = formatSearchParams(search, locations, userId);
 
         return Profile.findAll({
           where: searchParams,

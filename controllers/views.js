@@ -4,7 +4,6 @@ const models = require('./../models');
 const router = express.Router();
 const sequelize = models.sequelize;
 const Profile = models.Profile;
-const Location = models.Location;
 const View = models.View;
 
 router.get('/', (req, res) => {
